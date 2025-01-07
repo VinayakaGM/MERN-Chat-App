@@ -1,28 +1,30 @@
 import mongoose from "mongoose";
 
-const userModel = mongoose.Schema(
+const userSchema = mongoose.Schema(
   {
-    name: {
+    fullName: {
       type: String,
-      trim: true,
       required: true,
+      trim: true,
     },
+
     email: {
       type: String,
-      trim: true,
       required: true,
+      trim: true,
       unique: true,
     },
+
     password: {
       type: String,
-      trim: true,
       required: true,
+      trim: true,
+      minlength: 6,
     },
-    pic: {
+
+    profilePic: {
       type: String,
-      reuired: true,
-      default:
-        "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg",
+      default: "",
     },
   },
   {
@@ -30,6 +32,6 @@ const userModel = mongoose.Schema(
   }
 );
 
-const User = mongoose.model("User", userModel);
+const User = mongoose.model("User", userSchema);
 
 export default User;
